@@ -20,7 +20,7 @@ The Ecommerce Pipeline is an ETL (Extract, Transform, Load) system designed to p
 6. Install the required dependencies by running: `pip install -r requirements.txt`.
 
 ## Usage
-1. Execute the ETL process by running: `python3 etl.py`.
+1. Execute the ETL process by running: `python3 etl_och.py`.
 2. Transformed data will be loaded into the PostgreSQL database.
 
 ## Additional Notes
