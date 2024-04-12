@@ -1,9 +1,9 @@
 import pandas as pd
 
 ## READING RAW FILES ##
-c_= pd.read_json('raw_data/Market 2 Customers.json')
-d_= pd.read_csv('raw_data/Market 2 Deliveries.csv')
-o_= pd.read_csv('raw_data/Market 2 Orders.csv')
+c_= pd.read_json('RawData/Market 2 Customers.json')
+d_= pd.read_csv('RawData/Market 2 Deliveries.csv')
+o_= pd.read_csv('RawData/Market 2 Orders.csv')
 
 ##Transform customer data
 
@@ -49,4 +49,4 @@ o_.rename(columns={'Order ID': 'Order_ID'}, inplace=True)
 new_data = pd.merge(c_, o_, on='Customer ID', how = 'outer')
 new_data = pd.merge(new_data, d_, on='Order_ID', how='outer')
 
-new_data.to_csv('transformed_data/market2_data.csv', index = False)
+new_data.to_csv('RefineData/market2_data.csv', index = False)

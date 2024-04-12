@@ -5,13 +5,13 @@ from sqlalchemy import create_engine
 
 def run_transformation_scripts():
     print("Executing code files for extracting and transforming data...")
-    os.system("python m1_transformation.py")
-    os.system("python m2_transformation.py")
+    os.system("python market1transform.py")
+    os.system("python market2transform.py")
     print("Data transformation complete.")
 
 def create_table_from_csv(filename, table_name, conn):
     # Read the CSV file to determine schema
-    df = pd.read_csv(os.path.join('transformed_data', filename), low_memory=False)
+    df = pd.read_csv(os.path.join('RefineData', filename), low_memory=False)
 
     # Use pandas and SQLAlchemy to load data
     engine = create_engine('postgresql://ecompipe:ecompipe_passwd@localhost:5432/ecompipe')
@@ -27,16 +27,16 @@ def main():
     conn = psycopg2.connect(
         host="localhost",
         port="5432",
-        database="ecompipe",
-        user="ecompipe",
-        password="ecompipe_passwd"
+        database="marketintel",
+        user="username",
+        password="userpassword"
     )
     
     run_transformation_scripts()
     
     # Load the transformed data into PostgreSQL
-    create_table_from_csv('market1_data.csv', 'market_one', conn)
-    create_table_from_csv('market2_data.csv', 'market_two', conn)
+    create_table_from_csv('market1_data.csv', 'first_market', conn)
+    create_table_from_csv('market2_data.csv', 'second_market', conn)
 
     # Close the connection
     conn.close()

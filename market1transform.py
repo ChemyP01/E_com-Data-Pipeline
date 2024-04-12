@@ -3,9 +3,9 @@ import pandas as pd
 import numpy as np
 
 # Read data from files
-m1_customers = pd.read_json('raw_data/Market 1 Customers.json')
-m1_deliveries = pd.read_csv('raw_data/Market 1 Deliveries.csv')
-m1_orders = pd.read_csv('raw_data/Market 1 Orders.csv')
+m1_customers = pd.read_json('RawData/Market 1 Customers.json')
+m1_deliveries = pd.read_csv('RawData/Market 1 Deliveries.csv')
+m1_orders = pd.read_csv('RawData/Market 1 Orders.csv')
 
 # Transformation on the Market 1 Customers
 m1_customers.drop(columns=['Number of employees'], inplace=True)
@@ -52,4 +52,4 @@ new_data['Order_ID'] = new_data['Order_ID'].replace('', np.nan)
 new_data = pd.merge(new_data, m1_deliveries, on='Order_ID', how='outer')
 
 # Save merged data to a CSV file
-new_data.to_csv('transformed_data/market1_data.csv', index=False)
+new_data.to_csv('RefineData/market1_data.csv', index=False)
